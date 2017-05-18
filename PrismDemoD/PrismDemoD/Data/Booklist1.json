@@ -1,0 +1,44 @@
+﻿{
+  "Booklist": [
+    {
+      "Book": [
+        {
+          "Title": "Abenteuer unter Wasser",
+          "Author": "Peck",
+          "FirstName": "Gregory",
+          "Year": 2015,
+          "Read": false
+        },
+        {
+          "Title": "Deutsch lernen",
+          "Author": "Miller",
+          "FirstName": "Henry",
+          "Year": 1950,
+          "Read": true
+        },
+        {
+          "Title": "C# in an Nutshell",
+          "Author": "Albahari",
+          "FirstName": "Joseph",
+          "Year": 2015,
+          "Read": false
+        },
+        {
+          "Title": "Deutsch lernen",
+          "Author": "Miller",
+          "FirstName": "Henry",
+          "Year": 1950,
+          "Read": true
+        },
+        {
+          "Title": "The women",
+          "Author": "Boyle",
+          "FirstName": "T.C.",
+          "Year": 2010,
+          "Read": true
+        }
+      ]
+    }
+  ]
+}
+Copy

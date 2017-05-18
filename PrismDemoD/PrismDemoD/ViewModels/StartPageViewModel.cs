@@ -39,7 +39,7 @@ namespace PrismDemoD.ViewModels
         public DelegateCommand AddItemCommand { get; set; }
         public DelegateCommand RemoveItemCommand { get; set; }
         public DelegateCommand ReloadTagsCommand { get; set; }
-        public DelegateCommand<Book> PersonSelectedCommand => new DelegateCommand<Book>(OnBookSelectedCommandExecuted);
+        public DelegateCommand<Book> BookSelectedCommand => new DelegateCommand<Book>(OnBookSelectedCommandExecuted);
 
         private void AddTag()
         {
