@@ -63,10 +63,10 @@ namespace PrismDemoD.ViewModels
             ReloadTagsCommand = new DelegateCommand(ReloadTags);
 
             // _people = new ObservableCollection<Person>();  siehe oben
-            _booklist.Add(new Book() { FirstName = "Hamza", Author = "Anjum" });
-            _booklist.Add(new Book() { FirstName = "Shahzad", Author = "Sheikh" });
-            _booklist.Add(new Book() { FirstName = "Usman", Author = "Irfan" });
-            _booklist.Add(new Book() { FirstName = "Farooq", Author = "Kamran" });
+            _booklist.Add(new Book() { Title = "Narrenschicksal", FirstName = "Hamza", Author = "Anjum" });
+            _booklist.Add(new Book() { Title = "Abenteuer unter Wasser", FirstName = "Shahzad", Author = "Sheikh" });
+            _booklist.Add(new Book() { Title = "Emil und die Detektive", FirstName = "Usman", Author = "Irfan" });
+            _booklist.Add(new Book() { Title = "Totentanz", FirstName = "Farooq", Author = "Kamran" });
         }
 
         private void ToMain()
