@@ -6,6 +6,7 @@
              x:Class="PrismDemoD.Views.MainPage"
              Title="MainPage">
   <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-    <Label Text="{Binding Title}" />
+    <Label Text="Prism Demo with DryIoc IOC Container" />
+    <Label Text="References: NMackay" />
   </StackLayout>
 </ContentPage>

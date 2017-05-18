@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms" 
+             x:Class="PrismDemoD.Views.StartPage"
+             Title="Prism Demo DryIoc">
+
+  <StackLayout Padding="10">
+    <ListView ItemsSource="{Binding Booklist}" SeparatorVisibility="None">
+      <ListView.Behaviors>
+        <b:EventToCommandBehavior Command="{Binding BookSelectedCommand}"
+                                        EventName="ItemTapped"
+                                        EventArgsParameterPath="Item" />
+      </ListView.Behaviors>
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <!-- <TextCell Text="{Binding Name}" Detail="{Binding FirstName}" />  -->
+          <ViewCell>
+            <ContentView Padding="5">
+              <Frame OutlineColor="PeachPuff" Padding="5">
+                <StackLayout Orientation="Horizontal">
+                  <Label Text="{Binding Title}" />
+                  <Label Text="{Binding Year}" />
+                  <Label Text="{Binding FirstName}" />
+                  <Label Text="{Binding Author}" />
+                </StackLayout>
+              </Frame>
+            </ContentView>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+    <StackLayout>
+      <Label Text="{Binding MainText}" HorizontalOptions="Center" FontSize="Medium" />
+
+      <Button Text="Add Item" Command="{Binding AddItemCommand}" BackgroundColor="Gray" TextColor="Wheat" />
+      <Button Text="Remove Item Nummer 2 (drittes)" Command="{Binding RemoveItemCommand}" BackgroundColor="Gray" TextColor="Wheat" />
+      <Button Text="Reload Tags" Command="{Binding ReloadTagsCommand}" BackgroundColor="Gray" TextColor="Wheat" />
+      <Button Text="zur MainPage" Command="{Binding NavToMainPageCommand}" BackgroundColor="Gray" />
+    </StackLayout>
+  </StackLayout>
+
+</ContentPage>
