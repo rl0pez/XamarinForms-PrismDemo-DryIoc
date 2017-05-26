@@ -38,7 +38,7 @@
       <Button Text="Add Item" Command="{Binding AddItemCommand}" BackgroundColor="Gray" TextColor="Wheat" />
       <Button Text="Remove Item Nummer 2 (drittes)" Command="{Binding RemoveItemCommand}" BackgroundColor="Gray" TextColor="Wheat" />
       <Button Text="Reload Tags" Command="{Binding ReloadTagsCommand}" BackgroundColor="Gray" TextColor="Wheat" />
-      <Button Text="zur MainPage" Command="{Binding NavToMainPageCommand}" BackgroundColor="Gray" />
+      <Button Text="Load JSON Books" Command="{Binding LoadJsonCommand}" BackgroundColor="Gray" TextColor="Wheat" />
     </StackLayout>
   </StackLayout>
 

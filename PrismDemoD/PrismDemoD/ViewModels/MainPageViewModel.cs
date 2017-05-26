@@ -1,14 +1,21 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace PrismDemoD.ViewModels
 {
     public class MainPageViewModel : BindableBase, INavigationAware
     {
+        private INavigationService _navigationService;
+        public DelegateCommand ToStartPageCommand { get; private set; }
+
+        private string _paramEntry;
+        public string ParamEntry
+        {
+            get { return _paramEntry; }
+            set { SetProperty(ref _paramEntry, value); }
+        }
+
         private string _title;
         public string Title
         {
@@ -16,9 +23,22 @@ namespace PrismDemoD.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
-        public MainPageViewModel()
+        public MainPageViewModel(INavigationService navigationService)
+        {
+            _navigationService = navigationService;
+            ToStartPageCommand = new DelegateCommand(ToStartPage);
+
+        }
+
+        // Zur Startpage mit Parameter
+        private async void ToStartPage()
         {
 
+            var p = new NavigationParameters();
+            p.Add("paramEntry", _paramEntry);
+
+            await _navigationService.NavigateAsync("StartPage", p);
+            
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)

@@ -13,7 +13,7 @@ namespace PrismDemoD
         {
             InitializeComponent();
 
-            NavigationService.NavigateAsync("NavigationPage/StartPage");
+            NavigationService.NavigateAsync("NavigationPage/MainPage");
         }
 
         protected override void RegisterTypes()

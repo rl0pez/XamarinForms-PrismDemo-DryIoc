@@ -3,8 +3,9 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using PrismDemoD.Models;
 using System;
-using System.Collections.Generic;
+
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 
 namespace PrismDemoD.ViewModels
@@ -12,7 +13,33 @@ namespace PrismDemoD.ViewModels
     public class StartPageViewModel : BindableBase, INavigationAware
     {
         private INavigationService _navigationService;
-        public DelegateCommand NavToMainPageCommand { get; private set; }
+
+        // Passed parameter:
+        private string paramstring;
+        public void OnNavigatedTo(NavigationParameters parameters)
+        {
+            if (parameters.ContainsKey("paramEntry"))
+            {
+                paramstring = (string)parameters["paramEntry"];
+                //_lexitems = await _lexitemManager.GetTasksAsync(param_suchstring);
+                // LexItems = await _lexitemManager.GetTasksAsync(param_suchstring);
+
+                MainText = paramstring;
+                //int num = _lexitems.Count;
+                //string msg;
+                //_dialogService.DisplayAlertAsync("Jak Prism", "Listcount: " + num.ToString(), "OK");
+                //if (_lexitems.Count > 0)
+                //{
+                //    msg = num.ToString() + " items. ";
+                //    msg += _lexitems[0].canform;
+                //    ListStatus = msg;
+                //}
+            }
+            else
+            {
+                MainText = "Kein Parameter";    // wird nicht angezeigt
+            }
+        }
 
         private ObservableCollection<Book> _booklist = new ObservableCollection<Book>();
         public ObservableCollection<Book> Booklist
@@ -39,6 +66,7 @@ namespace PrismDemoD.ViewModels
         public DelegateCommand AddItemCommand { get; set; }
         public DelegateCommand RemoveItemCommand { get; set; }
         public DelegateCommand ReloadTagsCommand { get; set; }
+        public DelegateCommand LoadJsonCommand { get; set; }
         public DelegateCommand<Book> BookSelectedCommand => new DelegateCommand<Book>(OnBookSelectedCommandExecuted);
 
         private void AddTag()
@@ -55,12 +83,12 @@ namespace PrismDemoD.ViewModels
         public StartPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            NavToMainPageCommand = new DelegateCommand(ToMain);
             MainText = "Noch nichts Besonderes...";
             AddItemCommand = new DelegateCommand(AddTag);
             RemoveItemCommand = new DelegateCommand(RemoveItem);
             //NewItemsCommand = new DelegateCommand(Starten);    //(LoadNewItems);
             ReloadTagsCommand = new DelegateCommand(ReloadTags);
+            LoadJsonCommand = new DelegateCommand(LoadJsonBooks);
 
             // _people = new ObservableCollection<Person>();  siehe oben
             _booklist.Add(new Book() { Title = "Narrenschicksal", FirstName = "Hamza", Author = "Anjum" });
@@ -69,15 +97,21 @@ namespace PrismDemoD.ViewModels
             _booklist.Add(new Book() { Title = "Totentanz", FirstName = "Farooq", Author = "Kamran" });
         }
 
-        private void ToMain()
+        private void LoadJsonBooks()
         {
-            _navigationService.NavigateAsync("MainPage");
+            var assembly = typeof(LoadResourceText).GetTypeInfo().Assembly;
+            Stream stream = assembly.GetManifestResourceStream("Data/PrismDemoD.Booklist1.json");
+            string text = "";
+            using (var reader = new System.IO.StreamReader(stream))
+            {
+                text = reader.ReadToEnd();
+            }
         }
 
         void OnBookSelectedCommandExecuted(Book item)
         {
             //Debug.WriteLine("Hi " + name + "!");
-            MainText = "Buch " + item.Title + " (gelöscht)";
+            MainText = "Buch " + item.Title + " ( aus Liste entfernt)";
             _booklist.Remove(item);
         }
 
@@ -103,11 +137,6 @@ namespace PrismDemoD.ViewModels
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
-        {
-
-        }
-
-        public void OnNavigatedTo(NavigationParameters parameters)
         {
 
         }
