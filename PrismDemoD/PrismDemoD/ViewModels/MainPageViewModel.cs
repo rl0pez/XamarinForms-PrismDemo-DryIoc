@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using System;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 
@@ -51,10 +52,15 @@ namespace PrismDemoD.ViewModels
 
         }
 
-        public void OnNavigatedTo(NavigationParameters parameters)
+        public void OnNavigatedToAsync(NavigationParameters parameters)
         {
             if (parameters.ContainsKey("title"))
                 Title = (string)parameters["title"] + " and Prism";
+        }
+
+        public void OnNavigatedTo(NavigationParameters parameters)
+        {
+            
         }
     }
 }

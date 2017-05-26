@@ -1,5 +1,6 @@
 ﻿using DryIoc;
 using Prism.DryIoc;
+using PrismDemoD.Services;
 using PrismDemoD.Views;
 using Xamarin.Forms;
 
@@ -21,6 +22,8 @@ namespace PrismDemoD
             Container.RegisterTypeForNavigation<NavigationPage>();
             Container.RegisterTypeForNavigation<MainPage>();
             Container.RegisterTypeForNavigation<StartPage>();
+
+            Container.Register<IBookService, BookService>();
         }
     }
 }

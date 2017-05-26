@@ -8,7 +8,7 @@
              Title="Prism Demo DryIoc">
 
   <StackLayout Padding="10">
-    <ListView ItemsSource="{Binding Booklist}" SeparatorVisibility="None">
+    <ListView ItemsSource="{Binding Books}" SeparatorVisibility="None">
       <ListView.Behaviors>
         <b:EventToCommandBehavior Command="{Binding BookSelectedCommand}"
                                         EventName="ItemTapped"

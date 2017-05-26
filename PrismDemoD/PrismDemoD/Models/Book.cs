@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 
 namespace PrismDemoD.Models
 {
     public class Book
     {
+        [JsonProperty("UniqueId")]
+        public string ID { get; set; }
         public string Title { get; set; }
         public int Year { get; set; }
         public string Author { get; set; }
