@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using Newtonsoft.Json;
-
 using System.Threading.Tasks;
-using System.Collections;
 using PrismDemoD.Models;
 
 namespace PrismDemoD.Services

@@ -2,19 +2,22 @@
 using Prism.Mvvm;
 using Prism.Navigation;
 using PrismDemoD.Models;
-using System;
-using Newtonsoft.Json;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
 using PrismDemoD.Services;
 
 namespace PrismDemoD.ViewModels
 {
-    public class StartPageViewModel : BindableBase, INavigationAware
+    public class StartPageViewModel : ViewModelBase
     {
-        private INavigationService _navigationService;
+        readonly INavigationService _navigationService;
         IBookService _bookService;
+
+        private ObservableCollection<BookGroup> _bookGroups;
+        public ObservableCollection<BookGroup> BookGroups
+        {
+            get { return _bookGroups; }
+            set { SetProperty(ref _bookGroups, value); }
+        }
 
         // Passed parameter:
         private string paramstring;
@@ -43,32 +46,19 @@ namespace PrismDemoD.ViewModels
         //    }
         //}
 
-        public async void OnNavigatedTo(NavigationParameters parameters)
+        private ObservableCollection<Book> _books = new ObservableCollection<Book>();
+        public ObservableCollection<Book> Books
         {
-            if (BookGroups == null)
-                BookGroups = new ObservableCollection<BookGroup>(await _bookService.GetBookGroups());
+            get { return _books; }
+            set { SetProperty(ref _books, value); }
         }
 
-        private ObservableCollection<BookGroup> _bookGroups;
-        public ObservableCollection<BookGroup> BookGroups
+        private Book _book;
+        public Book Book
         {
-            get { return _bookGroups; }
-            set { SetProperty(ref _bookGroups, value); }
+            get { return _book; }
+            set { SetProperty(ref _book, value); }
         }
-
-        //private ObservableCollection<Book> _booklist = new ObservableCollection<Book>();
-        //public ObservableCollection<Book> Booklist
-        //{
-        //    get { return _booklist; }
-        //    set { SetProperty(ref _booklist, value); }
-        //}
-
-        //private Book _book;
-        //public Book Book
-        //{
-        //    get { return _book; }
-        //    set { SetProperty(ref _book, value); }
-        //}
         //public string _vorname = Person.FirstName;
 
         private string _maintext = "start...";
@@ -113,10 +103,10 @@ namespace PrismDemoD.ViewModels
             //_booklist.Add(new Book() { Title = "Totentanz", FirstName = "Farooq", Author = "Kamran" });
         }
 
-        private async void LoadJsonBooks()   
+        private async void LoadJsonBooks()
         {
-            if (BookGroups == null)
-                BookGroups = new ObservableCollection<BookGroup>(await _bookService.GetBookGroups());
+            //if (BookGroups == null)
+            //    BookGroups = new ObservableCollection<BookGroup>(await _bookService.GetBookGroups());
         }
 
         void OnBookSelectedCommandExecuted(Book item)
@@ -147,16 +137,11 @@ namespace PrismDemoD.ViewModels
             //MainText = tags.Count.ToString() + " reloaded...";
         }
 
-        public void OnNavigatedFrom(NavigationParameters parameters)
+        public async override void OnNavigatedTo(NavigationParameters parameters)
         {
-
+            if (BookGroups == null)
+                BookGroups = new ObservableCollection<BookGroup>(await _bookService.GetBookGroups());
         }
-
-        public void OnNavigatingTo(NavigationParameters parameters)
-        {
-
-        }
-
  
     }
     

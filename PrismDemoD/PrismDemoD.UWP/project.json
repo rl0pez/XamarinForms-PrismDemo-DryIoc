@@ -2,7 +2,7 @@
   "dependencies": {
     "DryIoc.dll": "2.10.7",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
-    "Newtonsoft.Json": "9.0.1",
+    "Newtonsoft.Json": "10.0.2",
     "Prism.Core": "6.3.0",
     "Prism.DryIoc.Forms": "6.3.0.1",
     "Prism.Forms": "6.3.0",
