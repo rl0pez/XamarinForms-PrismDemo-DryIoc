@@ -13,3 +13,8 @@ Prism Demo mit DryIoc IOC, zum Vergleich mit Unity (PrismDemoU oder PrismDemo)
 * Fkt. weder mit Newtonsoft.json 9.0.1 noch 10.0.2
 
 >> ACHTUNG: bei Problemen mit Datenanzige (leere Books-Collection) immer kontrollieren: json-File als embedded und json-File UTF-8 ohne BOM !!!
+
+## TODO für public repo
+* alles englisch im Code
+* Bücherliste bereinigen
+* 
