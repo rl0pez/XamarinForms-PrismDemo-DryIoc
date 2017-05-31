@@ -3,8 +3,9 @@
 Prism Demo mit DryIoc IOC, zum Vergleich mit Unity (PrismDemoU oder PrismDemo)
 
 ## Features
-* Book, BookGroup; Books, Bookgroups. 
-* (Original Rezept1 hat TabbedPage)
+* Book und Books
+* Add Book
+* Newtonsoft.json v 9.0.1
 
 ## Probleme
 * Funktioniert nicht: gem. Muster Rezept1 (Unity), abgewandelt mit Books.json2
