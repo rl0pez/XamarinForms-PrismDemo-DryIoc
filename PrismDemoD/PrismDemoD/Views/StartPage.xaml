@@ -16,7 +16,7 @@
       </ListView.Behaviors>
       <ListView.ItemTemplate>
         <DataTemplate>
-          <!-- <TextCell Text="{Binding Name}" Detail="{Binding FirstName}" />  -->
+          <!-- <TextCell Text="{Binding Name}" Detail="{Binding FirstName}" />  without ViewCell -->
           <ViewCell>
             <ContentView Padding="5">
               <Frame OutlineColor="PeachPuff" Padding="5">
@@ -35,7 +35,7 @@
     <StackLayout>
       <Label Text="{Binding MainText}" HorizontalOptions="Center" FontSize="Medium" />
 
-      <Button Text="Add Item" Command="{Binding AddItemCommand}" BackgroundColor="Gray" TextColor="Wheat" />
+      <Button Text="Add Book" Command="{Binding AddBookCommand}" BackgroundColor="Gray" TextColor="Wheat" />
       <Button Text="Remove Item Nummer 2 (drittes)" Command="{Binding RemoveItemCommand}" BackgroundColor="Gray" TextColor="Wheat" />
       <Button Text="Reload Tags" Command="{Binding ReloadTagsCommand}" BackgroundColor="Gray" TextColor="Wheat" />
       <Button Text="Load JSON Books" Command="{Binding LoadJsonCommand}" BackgroundColor="Gray" TextColor="Wheat" />

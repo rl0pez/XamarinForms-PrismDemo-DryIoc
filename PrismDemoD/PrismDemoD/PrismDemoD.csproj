@@ -35,9 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Converters\ListConverter.cs" />
     <Compile Include="Models\Book.cs" />
-    <Compile Include="Models\BookGroup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BookService.cs" />
     <Compile Include="Services\IBookService.cs" />
@@ -67,11 +65,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="DryIoc, Version=2.10.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\DryIoc.dll.2.10.7\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\DryIoc.dll</HintPath>
+    <Reference Include="DryIoc, Version=2.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DryIoc.dll.2.11.0\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\DryIoc.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.10.0.2\lib\portable-net45+win8+wpa81+wp8\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Prism, Version=6.3.0.0, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Prism.Core.6.3.0\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Prism.dll</HintPath>
@@ -93,7 +91,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\Booklist2.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

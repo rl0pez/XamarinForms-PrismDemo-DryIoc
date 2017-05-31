@@ -6,6 +6,6 @@ namespace PrismDemoD.Services
 {
     public interface IBookService
     {
-        Task<IList<BookGroup>> GetBookGroups();
+        Task<List<Book>> GetBooks();
     }
 }

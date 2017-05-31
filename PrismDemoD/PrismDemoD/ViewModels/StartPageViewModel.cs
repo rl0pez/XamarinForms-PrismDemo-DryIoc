@@ -12,11 +12,11 @@ namespace PrismDemoD.ViewModels
         readonly INavigationService _navigationService;
         IBookService _bookService;
 
-        private ObservableCollection<BookGroup> _bookGroups;
-        public ObservableCollection<BookGroup> BookGroups
+        private ObservableCollection<Book> _books = new ObservableCollection<Book>();
+        public ObservableCollection<Book> Books
         {
-            get { return _bookGroups; }
-            set { SetProperty(ref _bookGroups, value); }
+            get { return _books; }
+            set { SetProperty(ref _books, value); }
         }
 
         // Passed parameter:
@@ -46,20 +46,12 @@ namespace PrismDemoD.ViewModels
         //    }
         //}
 
-        private ObservableCollection<Book> _books = new ObservableCollection<Book>();
-        public ObservableCollection<Book> Books
-        {
-            get { return _books; }
-            set { SetProperty(ref _books, value); }
-        }
-
         private Book _book;
         public Book Book
         {
             get { return _book; }
             set { SetProperty(ref _book, value); }
         }
-        //public string _vorname = Person.FirstName;
 
         private string _maintext = "start...";
         public string MainText
@@ -68,18 +60,43 @@ namespace PrismDemoD.ViewModels
             set { SetProperty(ref _maintext, value); }
         }
 
-        public DelegateCommand AddItemCommand { get; set; }
+        private string _title;
+        public string Title
+        {
+            get { return _title; }
+            set { SetProperty(ref _title, value); }
+        }
+        private int _year;
+        public int Year
+        {
+            get { return _year; }
+            set { SetProperty(ref _year, value); }
+        }
+        private string _firstname;
+        public string FirstName
+        {
+            get { return _firstname; }
+            set { SetProperty(ref _firstname, value); }
+        }
+        private string _author;
+        public string Author
+        {
+            get { return _author; }
+            set { SetProperty(ref _author, value); }
+        }
+
+        public DelegateCommand AddBookCommand { get; set; }
         public DelegateCommand RemoveItemCommand { get; set; }
         public DelegateCommand ReloadTagsCommand { get; set; }
         public DelegateCommand LoadJsonCommand { get; set; }
         public DelegateCommand<Book> BookSelectedCommand => new DelegateCommand<Book>(OnBookSelectedCommandExecuted);
 
-        //private void AddTag()
-        //{
-        //    //_people.Add("zusätzlich");
-        //    _booklist.Add(new Book() { Title = "Neues Buch", Year = 2015, Author = "Dolby", FirstName = "John" });
-        //}
-        //private void RemoveItem()
+        private void AddBook()
+        {
+            Books.Add(new Book() { Title = "Neues Buch", Year = 2015, Author = "Dolby", FirstName = "John" });
+        }
+
+        // private void RemoveItem()
         //{
         //    _booklist.RemoveAt(2);
         //    MainText = "Buch an dritter Position gelöscht...";
@@ -90,10 +107,10 @@ namespace PrismDemoD.ViewModels
             _navigationService = navigationService;
             _bookService = bookService;
             MainText = "Noch nichts Besonderes...";
-            //AddItemCommand = new DelegateCommand(AddTag);
+            AddBookCommand = new DelegateCommand(AddBook);
             //RemoveItemCommand = new DelegateCommand(RemoveItem);
             //NewItemsCommand = new DelegateCommand(Starten);    //(LoadNewItems);
-            ReloadTagsCommand = new DelegateCommand(ReloadTags);
+            //ReloadTagsCommand = new DelegateCommand(ReloadTags);
             LoadJsonCommand = new DelegateCommand(LoadJsonBooks);
 
             //// _people = new ObservableCollection<Person>();  siehe oben
@@ -105,8 +122,11 @@ namespace PrismDemoD.ViewModels
 
         private async void LoadJsonBooks()
         {
-            //if (BookGroups == null)
-            //    BookGroups = new ObservableCollection<BookGroup>(await _bookService.GetBookGroups());
+            // Bücher  //// Achtung! fkt. nicht mit Null-Bedingung!!!!
+            //if (Books == null)
+            Books = new ObservableCollection<Book>(await _bookService.GetBooks());
+            Books.Add(new Book() { Title = "Narrenschicksal", FirstName = "Hamza", Author = "Anjum" });
+            MainText = Books[0].ToString();
         }
 
         void OnBookSelectedCommandExecuted(Book item)
@@ -116,33 +136,13 @@ namespace PrismDemoD.ViewModels
             //_booklist.Remove(item);
         }
 
-        public void ReloadTags()
-        {
-            //var tags = new ObservableCollection<string>();
-            //tags.Add("Im Westen nichts Neues");
-            //tags.Add("A Way with Words");
-            //tags.Add("Discourse & Cognition");
-            //tags.Add("Buch");
-            //tags.Add("Buch");
-            //tags.Add("Buch");
-            //tags.Add("Buch");
-            //tags.Add("Buch");
-
-            //_booklist.Clear();
-            //foreach (string t in tags)
-            //{
-            //    // zu Person umwandeln
-            //    _booklist.Add(new Book() { Title = t });
-            //}
-            //MainText = tags.Count.ToString() + " reloaded...";
-        }
-
         public async override void OnNavigatedTo(NavigationParameters parameters)
         {
-            if (BookGroups == null)
-                BookGroups = new ObservableCollection<BookGroup>(await _bookService.GetBookGroups());
+            //// Achtung! fkt. nicht mit Null-Bedingung!!!! >> Dies war der Blocker !!!!
+            //if (Books == null)
+            //Books = new ObservableCollection<Book>(await _bookService.GetBooks());
         }
- 
+
     }
     
 }
