@@ -9,7 +9,7 @@ namespace PrismDemoD.ViewModels
 {
     public class BookPageViewModel : ViewModelBase
     {
-                private Book _book;
+        private Book _book;
         public Book Book
         {
             get { return _book; }

@@ -5,7 +5,7 @@ using Prism.Navigation;
 
 namespace PrismDemoD.ViewModels
 {
-    public class MainPageViewModel : BindableBase, INavigationAware
+    public class MainPageViewModel : ViewModelBase
     {
         private INavigationService _navigationService;
         public DelegateCommand ToStartPageCommand { get; private set; }
@@ -42,15 +42,7 @@ namespace PrismDemoD.ViewModels
             
         }
 
-        public void OnNavigatedFrom(NavigationParameters parameters)
-        {
-
-        }
-
-        public void OnNavigatingTo(NavigationParameters parameters)
-        {
-
-        }
+ 
 
         public void OnNavigatedToAsync(NavigationParameters parameters)
         {
@@ -58,9 +50,5 @@ namespace PrismDemoD.ViewModels
                 Title = (string)parameters["title"] + " and Prism";
         }
 
-        public void OnNavigatedTo(NavigationParameters parameters)
-        {
-            
-        }
     }
 }

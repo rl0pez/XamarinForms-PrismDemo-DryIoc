@@ -17,9 +17,13 @@
     <Label Text="{Binding Book.Year}" FontSize="Medium" LineBreakMode="WordWrap" />
     <StackLayout Orientation="Horizontal" Padding="0,16,0,0">
       <Label Text="Author: " FontSize="Medium" FontAttributes="Italic" />
-      <Label Text="{Binding FirstName}" FontSize="Medium" />
-      <Label Text="{Binding Author}" FontSize="Medium" />
+      <Label Text="{Binding Book.FirstName}" FontSize="Medium" />
+      <Label Text="{Binding Book.Author}" FontSize="Medium" />
     </StackLayout>
-    <Label Text="{Binding Read}" />
+    <StackLayout Orientation="Horizontal">
+      <Label Text="Read: " />
+      <Label Text="{Binding Book.Read}" />
+    </StackLayout>
+   
   </StackLayout>
 </ContentPage>

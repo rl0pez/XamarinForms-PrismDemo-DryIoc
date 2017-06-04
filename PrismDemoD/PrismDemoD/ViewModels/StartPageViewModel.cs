@@ -21,15 +21,17 @@ namespace PrismDemoD.ViewModels
 
         // Passed parameter:
         private string paramstring;
-        //public void OnNavigatedTo(NavigationParameters parameters)
-        //{
-        //    if (parameters.ContainsKey("paramEntry"))
-        //    {
-        //        paramstring = (string)parameters["paramEntry"];
+        public async override void OnNavigatedTo(NavigationParameters parameters)
+        {
+            if (parameters.ContainsKey("paramEntry"))
+           {
+                Books = new ObservableCollection<Book>(await _bookService.GetBooks());
+
+                paramstring = (string)parameters["paramEntry"];
         //        //_lexitems = await _lexitemManager.GetTasksAsync(param_suchstring);
         //        // LexItems = await _lexitemManager.GetTasksAsync(param_suchstring);
 
-        //        MainText = paramstring;
+                MainText = "Parameter was: " + paramstring;
         //        //int num = _lexitems.Count;
         //        //string msg;
         //        //_dialogService.DisplayAlertAsync("Jak Prism", "Listcount: " + num.ToString(), "OK");
@@ -39,12 +41,12 @@ namespace PrismDemoD.ViewModels
         //        //    msg += _lexitems[0].canform;
         //        //    ListStatus = msg;
         //        //}
-        //    }
-        //    else
-        //    {
-        //        MainText = "Kein Parameter";    // wird nicht angezeigt
-        //    }
-        //}
+            }
+            else
+            {
+                MainText = "Kein Parameter";    // wird nicht angezeigt
+            }
+        }
 
         private Book _book;
         public Book Book
@@ -93,7 +95,7 @@ namespace PrismDemoD.ViewModels
 
         private void AddBook()
         {
-            Books.Add(new Book() { Title = "Neues Buch", Year = 2015, Author = "Dolby", FirstName = "John" });
+            _books.Add(new Book() { Title = "Neues Buch", Year = 2015, Author = "Dolby", FirstName = "John" });
         }
 
         // private void RemoveItem()
@@ -125,7 +127,7 @@ namespace PrismDemoD.ViewModels
             // Bücher  //// Achtung! fkt. nicht mit Null-Bedingung!!!!
             //if (Books == null)
             Books = new ObservableCollection<Book>(await _bookService.GetBooks());
-            Books.Add(new Book() { Title = "Narrenschicksal", FirstName = "Hamza", Author = "Anjum" });
+            _books.Add(new Book() { Title = "Narrenschicksal", FirstName = "Hamza", Author = "Anjum" });
             MainText = Books[0].ToString();
         }
 
@@ -137,12 +139,12 @@ namespace PrismDemoD.ViewModels
             await _navigationService.NavigateAsync("BookPage", p);
         }
 
-        public async override void OnNavigatedTo(NavigationParameters parameters)
-        {
-            //// Achtung! fkt. nicht mit Null-Bedingung!!!! >> Dies war der Blocker !!!!
-            //if (Books == null)
-            //Books = new ObservableCollection<Book>(await _bookService.GetBooks());
-        }
+        //public async override void OnNavigatedTo(NavigationParameters parameters)
+        //{
+        //    //// Achtung! fkt. nicht mit Null-Bedingung!!!! >> Dies war der Blocker !!!!
+        //    //if (Books == null)
+        //    Books = new ObservableCollection<Book>(await _bookService.GetBooks());
+        //}
 
     }
     
