@@ -129,11 +129,12 @@ namespace PrismDemoD.ViewModels
             MainText = Books[0].ToString();
         }
 
-        void OnBookSelectedCommandExecuted(Book item)
+        private async void OnBookSelectedCommandExecuted(Book book)
         {
-            //Debug.WriteLine("Hi " + name + "!");
-            MainText = "Buch " + item.Title + " ( aus Liste entfernt (disabled)";
-            //_booklist.Remove(item);
+            var p = new NavigationParameters();
+            p.Add("book", book);
+
+            await _navigationService.NavigateAsync("BookPage", p);
         }
 
         public async override void OnNavigatedTo(NavigationParameters parameters)

@@ -24,6 +24,7 @@ namespace PrismDemoD
             Container.RegisterTypeForNavigation<StartPage>();
 
             Container.Register<IBookService, BookService>();
+            Container.RegisterTypeForNavigation<BookPage>();
         }
     }
 }
