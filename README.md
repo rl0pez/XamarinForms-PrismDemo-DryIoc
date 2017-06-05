@@ -1,20 +1,14 @@
 # PrismDemoD
 
-Prism Demo mit DryIoc IOC, zum Vergleich mit Unity (PrismDemoU oder PrismDemo)
+Simple Xamarin Forms Demo with Prism MVVM und DryIoc Container
 
 ## Features
-* Book und Books
-* Add Book
-* Newtonsoft.json v 9.0.1
+* Prism Navigation, Service
+* Starting point: Prism Template
+* Newtonsoft.json v9.0.1
+* ListView: show book list loaded from local JSON-file
+* Show details of selected item
+* On Navigation: pass parameters from one page to the second
 
-## Probleme
-* Funktioniert nicht: gem. Muster Rezept1 (Unity), abgewandelt mit Books.json2
-* Fkt. nicht mit DryIoc: OnNavigatedTO: Bookgroups = null
-* Fkt. weder mit Newtonsoft.json 9.0.1 noch 10.0.2
-
->> ACHTUNG: bei Problemen mit Datenanzige (leere Books-Collection) immer kontrollieren: json-File als embedded und json-File UTF-8 ohne BOM !!!
-
-## TODO für public repo
-* alles englisch im Code
-* Bücherliste bereinigen
-* 
+## Notes
+* Please note: JSON files must be saved as UTF8 without BOM (German language) and must be marked in XF as EmbeddedResource!
