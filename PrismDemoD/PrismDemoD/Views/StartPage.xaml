@@ -5,7 +5,7 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms" 
              x:Class="PrismDemoD.Views.StartPage"
-             Title="Prism Demo DryIoc">
+             Title="XF Prism DryIoc Demo">
 
   <StackLayout Padding="10">
     <ListView ItemsSource="{Binding Books}" SeparatorVisibility="None">
@@ -16,12 +16,12 @@
       </ListView.Behaviors>
       <ListView.ItemTemplate>
         <DataTemplate>
-          <!-- <TextCell Text="{Binding Name}" Detail="{Binding FirstName}" />  without ViewCell -->
+          <!-- <TextCell Text="{Binding Name}" Detail="{Binding FirstName}" />  simple version without ViewCell -->
           <ViewCell>
             <ContentView Padding="5">
-              <Frame OutlineColor="PeachPuff" Padding="5">
+              <Frame OutlineColor="PeachPuff" Padding="5" HasShadow="False">
                 <StackLayout Orientation="Horizontal">
-                  <Label Text="{Binding Title}" />
+                  <Label Text="{Binding Title}" FontAttributes="Italic"/>
                   <Label Text="{Binding Year}" />
                   <Label Text="{Binding FirstName}" />
                   <Label Text="{Binding Author}" />
@@ -33,12 +33,9 @@
       </ListView.ItemTemplate>
     </ListView>
     <StackLayout>
-      <Label Text="{Binding MainText}" HorizontalOptions="Center" FontSize="Medium" />
-
+      <Label Text="{Binding MainText}" HorizontalOptions="Center" FontSize="Small" />
       <Button Text="Add Book" Command="{Binding AddBookCommand}" BackgroundColor="Gray" TextColor="Wheat" />
-      <Button Text="Remove Item Nummer 2 (drittes)" Command="{Binding RemoveItemCommand}" BackgroundColor="Gray" TextColor="Wheat" />
-      <Button Text="Reload Tags" Command="{Binding ReloadTagsCommand}" BackgroundColor="Gray" TextColor="Wheat" />
-      <Button Text="Load JSON Books" Command="{Binding LoadJsonCommand}" BackgroundColor="Gray" TextColor="Wheat" />
+      <Button Text="Reload Books" Command="{Binding LoadJsonCommand}" BackgroundColor="Gray" TextColor="Wheat" />
     </StackLayout>
   </StackLayout>
 

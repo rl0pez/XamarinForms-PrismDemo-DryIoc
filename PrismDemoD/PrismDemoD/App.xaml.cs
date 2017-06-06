@@ -14,17 +14,16 @@ namespace PrismDemoD
         {
             InitializeComponent();
 
-            NavigationService.NavigateAsync("NavigationPage/MainPage");
+            NavigationService.NavigateAsync("NavigationPage/StartPage");
         }
 
         protected override void RegisterTypes()
         {
             Container.RegisterTypeForNavigation<NavigationPage>();
-            Container.RegisterTypeForNavigation<MainPage>();
             Container.RegisterTypeForNavigation<StartPage>();
+            Container.RegisterTypeForNavigation<BookPage>();
 
             Container.Register<IBookService, BookService>();
-            Container.RegisterTypeForNavigation<BookPage>();
         }
     }
 }

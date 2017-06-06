@@ -12,17 +12,23 @@
         <OnPlatform x:TypeArguments="x:Boolean" iOS="False" Android="False" WinPhone="True" />
       </Label.IsVisible>
     </Label>
-    
-    <Label Text="{Binding Book.Title}" FontSize="Medium" LineBreakMode="WordWrap" />
-    <Label Text="{Binding Book.Year}" FontSize="Medium" LineBreakMode="WordWrap" />
-    <StackLayout Orientation="Horizontal" Padding="0,16,0,0">
+    <StackLayout Orientation="Horizontal">
+      <Label Text="Title: " FontSize="Medium" FontAttributes="Italic" />
+      <Label Text="{Binding Book.Title}" FontSize="Medium" LineBreakMode="WordWrap" />
+    </StackLayout>
+    <StackLayout Orientation="Horizontal">
+      <Label Text="Year: " FontSize="Medium" FontAttributes="Italic" />
+      <Label Text="{Binding Book.Year}" FontSize="Medium" />
+    </StackLayout>
+    <StackLayout Orientation="Horizontal">
       <Label Text="Author: " FontSize="Medium" FontAttributes="Italic" />
       <Label Text="{Binding Book.FirstName}" FontSize="Medium" />
       <Label Text="{Binding Book.Author}" FontSize="Medium" />
     </StackLayout>
     <StackLayout Orientation="Horizontal">
-      <Label Text="Read: " />
-      <Label Text="{Binding Book.Read}" />
+      <Label Text="ID / Read: " FontSize="Medium" FontAttributes="Italic"/>
+      <Label Text="{Binding Book.Id}" FontSize="Medium"/>
+      <Label Text="{Binding Book.Read}" FontSize="Medium"/>
     </StackLayout>
    
   </StackLayout>
