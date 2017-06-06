@@ -1,4 +1,4 @@
-# PrismDemoD
+# Xmamrin.Forms Prism Demo DryIoc
 
 Simple Xamarin Forms Demo with Prism MVVM und DryIoc Container
 
