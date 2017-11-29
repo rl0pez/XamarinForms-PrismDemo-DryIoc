@@ -6,6 +6,7 @@ Simple Xamarin Forms Demo with Prism MVVM und DryIoc Container
 * Prism Navigation, Service
 * Starting point: Prism Template
 * Xamarin Forms: 2.5.0.91635, Prism 6.0.1, DryIoc 2.12.5  (2017/11/29)
+* iOS: earlier than iOS 7 no longer supported!
 * Newtonsoft.json v10.0.3
 * ListView: book list loaded from local JSON-file
 * Show details of selected item
