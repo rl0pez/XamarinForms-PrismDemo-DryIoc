@@ -11,6 +11,7 @@ Simple Xamarin Forms Demo with Prism MVVM und DryIoc Container
 * ListView: book list loaded from local JSON-file
 * Show details of selected item
 * On Navigation: pass parameters from one page to the second
+* Display Alert Async (yes/no)
 
 ## Notes
 * Please note: JSON files must be saved as UTF8 without BOM (German language) and must be marked in XF as EmbeddedResource!
